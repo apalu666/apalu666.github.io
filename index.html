@@ -688,7 +688,7 @@
                 message += `${index + 1}. ${item.name} (SL: ${item.quantity}) - Giá: ${item.price}\n`;
             });
             message += `Tổng cộng: ${cartTotalPrice.innerText}`;
-            window.open(`https://zalo.me/0942135506`, '_blank');
+            window.open(`https://zalo.me/0942135506?text=${encodedMessage}`, '_blank');
         });
 
         function updatePaginationControls() {
