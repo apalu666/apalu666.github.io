@@ -121,9 +121,12 @@
 
     <header class="bg-white border-b border-gray-200 sticky top-0 z-40 transition-all duration-300 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <a href="#" class="inline-flex items-center gap-3">
-                <img src="./image/logo.png" alt="Apalu Store Logo" class="h-20 w-auto object-contain">
-                <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-cyan-600">Apalu-Store</span>
+            <a href="#" class="inline-flex items-center gap-3 h-full">
+                <img src="./image/logo.png" alt="Apalu Store Logo" class="h-14 w-auto object-contain">
+                
+                <span class="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-cyan-600 tracking-wide">
+                    Apalu-Store
+                </span>
             </a>
 
             <nav class="hidden md:flex space-x-8 font-medium text-sm text-gray-600">
@@ -141,14 +144,64 @@
         </div>
     </header>
 
-    <section class="bg-gradient-to-r from-teal-800 to-cyan-900 text-white py-16 px-4 text-center relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        <div class="max-w-3xl mx-auto relative z-10 space-y-4">
-            <span class="bg-teal-500/20 text-teal-300 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Bộ Sưu Tập Mới 2026</span>
-            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">Trải Nghiệm Mua Hàng Đỉnh Cao</h1>
-            <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto">Khám phá các sản phẩm chọn lọc với mức giá ưu đãi và dịch vụ chăm sóc khách hàng 24/7.</p>
-            <div class="pt-2">
-                <a href="#products-section" class="bg-white text-teal-900 font-semibold px-6 py-3 rounded-xl shadow-lg hover:bg-gray-100 transition duration-300 inline-block transform hover:-translate-y-0.5">Mua Ngay Lúc Này</a>
+    <section class="bg-gradient-to-br from-emerald-950 via-teal-900 to-cyan-950 text-white py-24 px-4 text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-25 pointer-events-none flex items-center justify-center">
+            <svg class="w-[340px] h-[340px] sm:w-[450px] sm:h-[450px] text-cyan-400/40 animate-[spin_45s_linear_infinite]" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(100,100)">
+                    
+                    <g class="text-emerald-400/40" fill="currentColor">
+                        <path d="M 0,-85 C 30,-85 65,-60 70,-20 C 75,20 45,45 20,35 C -5,25 -10,-10 0,-35 C 10,-60 0,-85 0,-85 Z" />
+                        <path d="M 0,-85 C -15,-100 -5,-115 -25,-125 C -10,-115 5,-105 5,-85 Z" />
+                        <path d="M 0,-85 C 10,-100 15,-115 5,-128 C 12,-115 15,-105 5,-85 Z" opacity="0.7"/>
+                        <path d="M 68,-30 C 85,-40 85,-15 65, -5 Z" />
+                        <path d="M 35,20 C 45,35 25,40 20,30 Z" />
+                        <circle cx="35" cy="-25" r="4.5" fill="#22d3ee" />
+                    </g>
+                    
+                    <g transform="rotate(180)" class="text-cyan-400/35" fill="currentColor">
+                        <path d="M 0,-85 C 30,-85 65,-60 70,-20 C 75,20 45,45 20,35 C -5,25 -10,-10 0,-35 C 10,-60 0,-85 0,-85 Z" />
+                        <path d="M 0,-85 C -15,-100 -5,-115 -25,-125 C -10,-115 5,-105 5,-85 Z" />
+                        <path d="M 0,-85 C 10,-100 15,-115 5,-128 C 12,-115 15,-105 5,-85 Z" opacity="0.7"/>
+                        <path d="M 68,-30 C 85,-40 85,-15 65, -5 Z" />
+                        <path d="M 35,20 C 45,35 25,40 20,30 Z" />
+                        <circle cx="35" cy="-25" r="4.5" fill="#34d399" />
+                    </g>
+                    
+                </g>
+            </svg>
+
+            <svg class="absolute bottom-0 left-0 w-full h-28 text-white opacity-25" viewBox="0 0 1440 74" fill="currentColor" preserveAspectRatio="none">
+                <path d="M0,32L48,37.3C96,43,192,53,288,48C384,43,480,21,576,16C672,11,768,21,864,32C960,43,1056,53,1152,58.7L1248,64L1344,64L1440,58.7L1440,74L1344,74L1248,74L1152,74L1056,74L964,74L864,74L768,74L672,74L576,74L480,74L384,74L288,74L192,74L96,74L48,74L0,74Z"></path>
+            </svg>
+
+            <span class="absolute top-12 left-16 text-3xl opacity-40 animate-pulse">🌿</span>
+            <span class="absolute bottom-20 left-12 text-2xl opacity-20 transform -rotate-12">🍃</span>
+            <span class="absolute top-16 right-20 text-3xl opacity-30">🌸</span>
+            <span class="absolute bottom-16 right-16 text-4xl opacity-40">💧</span>
+        </div>
+
+        <div class="max-w-3xl mx-auto relative z-10 space-y-6">
+            <span class="bg-cyan-500/10 backdrop-blur-md border border-cyan-500/20 text-cyan-300 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest inline-flex items-center gap-2">
+                <span>♓</span>
+                <span class="lang-vi">Tuyệt Tác Song Ngư Hội Tụ 2026</span>
+                <span class="lang-en hidden">The Pisces Harmony Collection 2026</span>
+            </span>
+            
+            <h1 class="text-4xl sm:text-5xl font-serif font-bold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-emerald-100 to-cyan-200">
+                <span class="lang-vi">Sức Sống Khởi Nguồn Từ Vòng Quay Thiên Nhiên</span>
+                <span class="lang-en hidden">Nature's Flow of Pure Vitality</span>
+            </h1>
+            
+            <p class="text-emerald-100/80 text-sm sm:text-base max-w-xl mx-auto font-light leading-relaxed">
+                <span class="lang-vi">Nơi đôi cá Song Ngư uốn lượn mềm mại, hòa quyện dòng nước ngọc bích mát lành cùng dưỡng chất hoa cỏ, mang lại sự cân bằng thuần khiết và tươi mới cho tâm trí bạn.</span>
+                <span class="lang-en hidden">Where twin Pisces glide in perfect unison, blending pure crystalline water with botanical nutrients to bring ultimate balance to your soul.</span>
+            </p>
+            
+            <div class="pt-4">
+                <a href="#products-section" class="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 text-teal-950 font-bold px-10 py-4 rounded-full shadow-lg shadow-cyan-950/40 hover:from-emerald-300 hover:to-cyan-300 transition duration-300 inline-block transform hover:-translate-y-1">
+                    <span class="lang-vi">Trải Nghiệm Sự Thuần Khiết 🌊</span>
+                    <span class="lang-en hidden">Feel the Pureness 🌊</span>
+                </a>
             </div>
         </div>
     </section>
