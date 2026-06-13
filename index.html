@@ -16,16 +16,6 @@
             scroll-behavior: smooth;
             top: 0 !important;
         }
-        /* Ẩn hoàn toàn các thanh banner và pop-up thừa thãi của Google Translate để giữ UI sạch sẽ */
-        .goog-te-banner-frame, #goog-gt-tt, .goog-te-balloon-frame, iframe.goog-te-banner-frame, .goog-te-banner { 
-            display: none !important; 
-        }
-        .goog-text-highlight {
-            background-color: transparent !important;
-            box-shadow: none !important;
-        }
-        
-        /* --- NÂNG CẤP HOẠT ẢNH UI/UX GIỎ HÀNG --- */
         @keyframes cart-pop {
             0% { transform: scale(1); }
             30% { transform: scale(1.4) rotate(-10deg); }
@@ -36,7 +26,6 @@
         .cart-animate-pop {
             animation: cart-pop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
         @keyframes badge-pulse {
             0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
             50% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
@@ -44,8 +33,6 @@
         .badge-pulse-active {
             animation: badge-pulse 1.5s infinite ease-in-out;
         }
-
-        /* Hiệu ứng hào quang lan tỏa (Ripple Effect) khi thêm sản phẩm thành công */
         .cart-ripple {
             position: relative;
         }
@@ -68,14 +55,15 @@
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
-    <div id="google_translate_element" style="visibility: hidden; position: absolute; top: -9999px;"></div>
-
     <div class="bg-gray-900 text-gray-300 text-xs py-2 px-4 relative z-50 shadow-md">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
             <div class="flex items-center space-x-4">
                 <div class="flex items-center space-x-1">
                     <i class="fa-regular fa-clock text-teal-400"></i>
-                    <span>Hà Nội: <strong id="local-clock" class="text-white">00:00:00</strong></span>
+                    <span class="flex items-center gap-1">
+                        <span data-i18n="hanoi_clock">Hà Nội:</span> 
+                        <strong id="local-clock" class="text-white">00:00:00</strong>
+                    </span>
                 </div>
             </div>
             
@@ -93,25 +81,25 @@
                             <span class="flex items-center space-x-2"><span>🇻🇳</span> <span>Việt Nam</span></span>
                             <span class="font-mono text-gray-400" id="preview-Asia-Ho_Chi_Minh">00:00</span>
                         </button>
-                        <button onclick="changeActiveClock('America/New_York', '🇺🇸', 'New York (EST)')" class="w-full flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-teal-50 hover:text-teal-600 text-left transition text-xs">
-                            <span class="flex items-center space-x-2"><span>🇺🇸</span> <span>New York</span></span>
+                        <button onclick="changeActiveClock('America/New_York', '🇺🇸', 'New York')" class="w-full flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-teal-50 hover:text-teal-600 text-left transition text-xs">
+                            <span class="flex items-center space-x-2"><span>🇺🇸</span> <span>English</span></span>
                             <span class="font-mono text-gray-400" id="preview-America-New_York">00:00</span>
                         </button>
-                        <button onclick="changeActiveClock('Europe/Paris', '🇫🇷', 'Paris (CET)')" class="w-full flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-teal-50 hover:text-teal-600 text-left transition text-xs">
-                            <span class="flex items-center space-x-2"><span>🇫🇷</span> <span>Pháp (Paris)</span></span>
+                        <button onclick="changeActiveClock('Europe/Paris', '🇫🇷', 'Français')" class="w-full flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-teal-50 hover:text-teal-600 text-left transition text-xs">
+                            <span class="flex items-center space-x-2"><span>🇫🇷</span> <span>Français</span></span>
                             <span class="font-mono text-gray-400" id="preview-Europe-Paris">00:00</span>
                         </button>
-                        <button onclick="changeActiveClock('Asia/Tokyo', '🇯🇵', 'Nhật Bản')" class="w-full flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-teal-50 hover:text-teal-600 text-left transition text-xs">
-                            <span class="flex items-center space-x-2"><span>🇯🇵</span> <span>Nhật Bản</span></span>
+                        <button onclick="changeActiveClock('Asia/Tokyo', '🇯🇵', '日本語')" class="w-full flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-teal-50 hover:text-teal-600 text-left transition text-xs">
+                            <span class="flex items-center space-x-2"><span>🇯🇵</span> <span>日本語</span></span>
                             <span class="font-mono text-gray-400" id="preview-Asia-Tokyo">00:00</span>
                         </button>
-                        <button onclick="changeActiveClock('Asia/Seoul', '🇰🇷', 'Hàn Quốc')" class="w-full flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-teal-50 hover:text-teal-600 text-left transition text-xs">
-                            <span class="flex items-center space-x-2"><span>🇰🇷</span> <span>Hàn Quốc</span></span>
+                        <button onclick="changeActiveClock('Asia/Seoul', '🇰🇷', '한국어')" class="w-full flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-teal-50 hover:text-teal-600 text-left transition text-xs">
+                            <span class="flex items-center space-x-2"><span>🇰🇷</span> <span>한국어</span></span>
                             <span class="font-mono text-gray-400" id="preview-Asia-Seoul">00:00</span>
                         </button>
-                        <button onclick="changeActiveClock('Australia/Sydney', '🇦🇺', 'Sydney (AEST)')" class="w-full flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-teal-50 hover:text-teal-600 text-left transition text-xs">
-                            <span class="flex items-center space-x-2"><span>🇦🇺</span> <span>Úc (Sydney)</span></span>
-                            <span class="font-mono text-gray-400" id="preview-Australia-Sydney">00:00</span>
+                        <button onclick="changeActiveClock('Asia/Shanghai', '🇨🇳', '中文')" class="w-full flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-teal-50 hover:text-teal-600 text-left transition text-xs">
+                            <span class="flex items-center space-x-2"><span>🇨🇳</span> <span>中文</span></span>
+                            <span class="font-mono text-gray-400" id="preview-Asia-Shanghai">00:00</span>
                         </button>
                     </div>
                 </div>
@@ -123,16 +111,15 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <a href="#" class="inline-flex items-center gap-3 h-full">
                 <img src="./image/logo.png" alt="Apalu Store Logo" class="h-14 w-auto object-contain">
-                
                 <span class="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-cyan-600 tracking-wide">
                     Apalu-Store
                 </span>
             </a>
 
             <nav class="hidden md:flex space-x-8 font-medium text-sm text-gray-600">
-                <a href="#" class="text-teal-600 hover:text-teal-700 transition">Trang chủ</a>
-                <a href="#products-section" class="hover:text-teal-600 transition">Sản phẩm</a>
-                <a href="#contact-section" class="hover:text-teal-600 transition">Liên hệ</a>
+                <a href="#" class="text-teal-600 hover:text-teal-700 transition" data-i18n="nav_home">Trang chủ</a>
+                <a href="#products-section" class="hover:text-teal-600 transition" data-i18n="nav_products">Sản phẩm</a>
+                <a href="#contact-section" class="hover:text-teal-600 transition" data-i18n="nav_contact">Liên hệ</a>
             </nav>
             
             <div class="flex items-center space-x-4">
@@ -146,61 +133,54 @@
 
     <section class="bg-gradient-to-br from-slate-950 via-teal-950 to-emerald-950 text-white py-24 px-4 text-center relative overflow-hidden">
         <div class="absolute inset-0 opacity-25 pointer-events-none flex items-center justify-center">
-            <svg class="w-[380px] h-[380px] sm:w-[480px] sm:h-[480px] text-teal-400/30 animate-[spin_50s_linear_infinite]" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <svg class="w-[380px] h-[380px] sm:w-[480px] sm:h-[480px] text-yellow-500/40 animate-[spin_60s_linear_infinite]" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <filter id="gold-glow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="2" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                </defs>
                 <g transform="translate(100,100)">
-                    
-                    <g class="text-emerald-400/60" fill="currentColor">
-                        <path d="M 0,-75 C 25,-70 45,-45 40,-10 C 35,20 15,45 0,65 C 10,40 22,15 20,-10 C 18,-35 0,-60 0,-75 Z" />
-                        <path d="M 0,65 C -10,75 -25,95 -15,110 C 2,115 10,85 0,65 Z" opacity="0.85" />
-                        <path d="M 19,-50 C 35,-55 38,-35 28,-20 C 25,-28 22,-40 19,-50 Z" />
-                        <path d="M 36,-15 C 55,-10 52,15 30,10 Z" />
-                        <path d="M 0,-75 C 8,-85 15,-80 12,-72" fill="none" stroke="currentColor" stroke-width="1.5" />
-                        <circle cx="10" cy="-62" r="3" fill="#22d3ee" />
+                    <g class="text-yellow-500" fill="currentColor" filter="url(#gold-glow)">
+                        <path d="M 0,-80 C 35,-75 55,-45 45,-10 C 35,25 15,50 0,70 C 12,45 25,20 22,-10 C 18,-40 0,-65 0,-80 Z" />
+                        <path d="M 0,70 C -15,85 -35,105 -20,120 C 0,125 12,95 0,70 Z" class="text-yellow-400" fill="currentColor" opacity="0.9" />
+                        <path d="M 0,70 C 15,85 30,100 25,115 C 10,115 2,90 0,70 Z" class="text-amber-500" fill="currentColor" opacity="0.8" />
+                        <path d="M 38,-45 C 60,-50 65,-25 45,-15 C 38,-22 35,-35 38,-45 Z" class="text-amber-400" fill="currentColor" />
+                        <path d="M 12,-60 C 25,-72 32,-60 22,-50 C 16,-52 13,-56 12,-60 Z" class="text-yellow-600" fill="currentColor" />
+                        <path d="M 0,-80 C 8,-90 18,-85 14,-75" fill="none" stroke="#facc15" stroke-width="2" />
+                        <circle cx="12" cy="-68" r="2.5" fill="#1e293b" />
+                        <circle cx="11" cy="-69" r="1" fill="#ffffff" />
                     </g>
-                    
-                    <g transform="rotate(180)" class="text-teal-400/50" fill="currentColor">
-                        <path d="M 0,-75 C 25,-70 45,-45 40,-10 C 35,20 15,45 0,65 C 10,40 22,15 20,-10 C 18,-35 0,-60 0,-75 Z" />
-                        <path d="M 0,65 C -10,75 -25,95 -15,110 C 2,115 10,85 0,65 Z" opacity="0.85" />
-                        <path d="M 19,-50 C 35,-55 38,-35 28,-20 C 25,-28 22,-40 19,-50 Z" />
-                        <path d="M 36,-15 C 55,-10 52,15 30,10 Z" />
-                        <path d="M 0,-75 C 8,-85 15,-80 12,-72" fill="none" stroke="currentColor" stroke-width="1.5" />
-                        <circle cx="10" cy="-62" r="3" fill="#34d399" />
+                    <g transform="rotate(180)" class="text-amber-500" fill="currentColor" filter="url(#gold-glow)">
+                        <path d="M 0,-80 C 35,-75 55,-45 45,-10 C 35,25 15,50 0,70 C 12,45 25,20 22,-10 C 18,-40 0,-65 0,-80 Z" />
+                        <path d="M 0,70 C -15,85 -35,105 -20,120 C 0,125 12,95 0,70 Z" class="text-yellow-500" fill="currentColor" opacity="0.9" />
+                        <path d="M 0,70 C 15,85 30,100 25,115 C 10,115 2,90 0,70 Z" class="text-yellow-400" fill="currentColor" opacity="0.8" />
+                        <path d="M 38,-45 C 60,-50 65,-25 45,-15 C 38,-22 35,-35 38,-45 Z" class="text-yellow-400" fill="currentColor" />
+                        <path d="M 12,-60 C 25,-72 32,-60 22,-50 C 16,-52 13,-56 12,-60 Z" class="text-amber-600" fill="currentColor" />
+                        <path d="M 0,-80 C 8,-90 18,-85 14,-75" fill="none" stroke="#facc15" stroke-width="2" />
+                        <circle cx="12" cy="-68" r="2.5" fill="#1e293b" />
+                        <circle cx="11" cy="-69" r="1" fill="#ffffff" />
                     </g>
-                    
                 </g>
             </svg>
-
             <svg class="absolute bottom-0 left-0 w-full h-28 text-white opacity-[0.15]" viewBox="0 0 1440 74" fill="currentColor" preserveAspectRatio="none">
                 <path d="M0,32L48,37.3C96,43,192,53,288,48C384,43,480,21,576,16C672,11,768,21,864,32C960,43,1056,53,1152,58.7L1248,64L1344,64L1440,58.7L1440,74L1344,74L1248,74L1152,74L1056,74L964,74L864,74L768,74L672,74L576,74L480,74L384,74L288,74L192,74L96,74L48,74L0,74Z"></path>
             </svg>
-
-            <span class="absolute top-12 left-16 text-2xl opacity-30 animate-pulse">✨</span>
-            <span class="absolute bottom-20 left-12 text-xl opacity-20 transform -rotate-12">💧</span>
-            <span class="absolute top-16 right-20 text-2xl opacity-20">🌸</span>
-            <span class="absolute bottom-16 right-16 text-3xl opacity-30 animate-bounce">🌊</span>
         </div>
 
         <div class="max-w-3xl mx-auto relative z-10 space-y-6">
             <span class="bg-emerald-500/10 backdrop-blur-md border border-emerald-500/20 text-emerald-300 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest inline-flex items-center gap-2">
-                <span>☯️</span>
-                <span class="lang-vi">Tuyệt Tác Song Ngư Hội Tụ 2026</span>
-                <span class="lang-en hidden">The Pisces Koi Collection 2026</span>
+                <span data-i18n="hero_badge">☯️ Tuyệt Tác Song Ngư Hội Tụ 2026</span>
             </span>
-            
-            <h1 class="text-4xl sm:text-5xl font-serif font-bold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-teal-100 to-emerald-200">
-                <span class="lang-vi">Vòng Tuần Hoàn Của Thịnh Vượng & Bình Yên</span>
-                <span class="lang-en hidden">The Eternal Flow of Fortune & Harmony</span>
+            <h1 class="text-4xl sm:text-5xl font-serif font-bold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-teal-100 to-emerald-200" data-i18n="hero_title">
+                Vòng Tuần Hoàn Của Thịnh Vượng & Bình Yên
             </h1>
-            
-            <p class="text-teal-100/80 text-sm sm:text-base max-w-xl mx-auto font-light leading-relaxed">
-                <span class="lang-vi">Nơi cặp cá chép Koi uốn lượn thướt tha tạo thành biểu tượng Song Ngư hoàn mỹ, mang lại dòng chảy năng lượng cân bằng, may mắn và tài lộc vĩnh cửu.</span>
-                <span class="lang-en hidden">Where twin Koi fish glide in perfect harmony, forming the sacred Pisces emblem to bring balance, luck, and boundless prosperity to your life.</span>
+            <p class="text-teal-100/80 text-sm sm:text-base max-w-xl mx-auto font-light leading-relaxed" data-i18n="hero_desc">
+                Nơi cặp cá chép Koi uốn lượn thướt tha tạo thành biểu tượng Song Ngư hoàn mỹ, mang lại dòng chảy năng lượng cân bằng, may mắn và tài lộc vĩnh cửu.
             </p>
-            
             <div class="pt-4">
-                <a href="#products-section" class="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 text-slate-950 font-bold px-10 py-4 rounded-full shadow-lg shadow-emerald-950/40 hover:from-emerald-300 hover:to-cyan-300 transition duration-300 inline-block transform hover:-translate-y-1">
-                    <span class="lang-vi">Chiêm Ngưỡng Tuyệt Tác 🌊</span>
-                    <span class="lang-en hidden">Explore The Collection 🌊</span>
+                <a href="#products-section" class="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 text-slate-950 font-bold px-10 py-4 rounded-full shadow-lg shadow-emerald-950/40 hover:from-emerald-300 hover:to-cyan-300 transition duration-300 inline-block transform hover:-translate-y-1" data-i18n="hero_btn">
+                    Chiêm Ngưỡng Tuyệt Tác 🌊
                 </a>
             </div>
         </div>
@@ -209,110 +189,102 @@
     <main id="products-section" class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4 border-b border-gray-200 pb-5">
             <div>
-                <h2 class="text-2xl font-bold text-gray-900 tracking-tight">Sản Phẩm Nổi Bật</h2>
-                <p class="text-sm text-gray-500 mt-1">Hiển thị 6 sản phẩm mỗi trang trên tổng số 30 sản phẩm</p>
+                <h2 class="text-2xl font-bold text-gray-900 tracking-tight" data-i18n="section_title">Sản Phẩm Nổi Bật</h2>
+                <p class="text-sm text-gray-500 mt-1" data-i18n="section_desc">Hiển thị 6 sản phẩm mỗi trang trên tổng số 30 sản phẩm</p>
             </div>
             <div id="page-indicator" class="text-xs font-semibold uppercase tracking-wider text-gray-400 bg-gray-100 px-3 py-1.5 rounded-md">
-                Trang 1 / 5
-            </div>
+                </div>
         </div>
 
         <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[600px] transition-all duration-300"></div>
 
         <div class="flex justify-center items-center space-x-2 mt-12">
-            <button id="prev-btn" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition disabled:opacity-40 disabled:cursor-not-allowed">
+            <button id="prev-btn" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition disabled:opacity-40 disabled:cursor-not-allowed" data-i18n="btn_prev">
                 <i class="fa-solid fa-chevron-left mr-1"></i> Trước
             </button>
             <div id="pagination-numbers" class="flex space-x-1"></div>
-            <button id="next-btn" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition disabled:opacity-40 disabled:cursor-not-allowed">
+            <button id="next-btn" class="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition disabled:opacity-40 disabled:cursor-not-allowed" data-i18n="btn_next">
                 Sau <i class="fa-solid fa-chevron-right ml-1"></i>
             </button>
         </div>
     </main>
 
-    <!-- GIẢM PADDING DỌC CỦA SECTION TỪ PY-16 XUỐNG PY-10 -->
     <section id="contact-section" class="bg-gray-50 border-t border-gray-200 py-10 px-4">
-            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
-                
-                <div class="space-y-5 flex flex-col justify-between">
-                    <div>
-                        <h2 class="text-base sm:text-xl font-extrabold text-gray-900 tracking-tight mb-2">Thông Tin Liên Hệ & Thanh Toán</h2>
-                        <p class="text-gray-600 text-sm leading-relaxed">Gặp bất cứ khó khăn nào? Hãy liên hệ trực tiếp với chúng tôi theo thông tin chi tiết bên dưới:</p>
-                    </div>
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+            <div class="space-y-5 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-base sm:text-xl font-extrabold text-gray-900 tracking-tight mb-2" data-i18n="contact_title">Thông Tin Liên Hệ & Thanh Toán</h2>
+                    <p class="text-gray-600 text-sm leading-relaxed" data-i18n="contact_desc">Gặp bất cứ khó khăn nào? Hãy liên hệ trực tiếp với chúng tôi theo thông tin chi tiết bên dưới:</p>
+                </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="p-3 bg-white rounded-xl border border-gray-200 shadow-sm flex items-center space-x-2.5 hover:border-teal-500 transition-all duration-300 group">
-                            <div class="bg-teal-50 text-teal-600 p-2.5 rounded-lg text-lg group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300 shrink-0">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
-                            <div class="min-w-0">
-                                <h4 class="font-bold text-sm text-gray-500 tracking-tight">Địa chỉ cửa hàng</h4>
-                                <p class="text-sm sm:text-sm text-gray-900 font-bold mt-0.5 truncate xs:whitespace-normal">21 Lê Văn Lương, Thanh Xuân, HN</p>
-                            </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div class="p-3 bg-white rounded-xl border border-gray-200 shadow-sm flex items-center space-x-2.5 hover:border-teal-500 transition-all duration-300 group">
+                        <div class="bg-teal-50 text-teal-600 p-2.5 rounded-lg text-lg group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300 shrink-0">
+                            <i class="fa-solid fa-location-dot"></i>
                         </div>
-
-                        <div class="p-3 bg-white rounded-xl border border-gray-200 shadow-sm flex items-center space-x-2.5 hover:border-teal-500 transition-all duration-300 group">
-                            <div class="bg-teal-50 text-teal-600 p-2.5 rounded-lg text-lg group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300 shrink-0">
-                                <i class="fa-solid fa-comments"></i>
-                            </div>
-                            <div class="min-w-0">
-                                <h4 class="font-bold text-sm text-gray-500 tracking-tight">Tư vấn Zalo 24/7</h4>
-                                <p class="text-base mt-0.5 font-mono">
-                                    <a href="https://zalo.me/0942135506" target="_blank" rel="noopener noreferrer" class="text-teal-600 hover:text-teal-700 hover:underline font-black tracking-wide">0942 135 506</a>
-                                </p>
-                            </div>
+                        <div class="min-w-0">
+                            <h4 class="font-bold text-sm text-gray-500 tracking-tight" data-i18n="contact_address_title">Địa chỉ cửa hàng</h4>
+                            <p class="text-sm text-gray-900 font-bold mt-0.5 truncate xs:whitespace-normal" data-i18n="contact_address_detail">21 Lê Văn Lương, Thanh Xuân, HN</p>
                         </div>
                     </div>
 
-                    <div class="p-4 bg-white rounded-xl border-2 border-teal-600/20 shadow-sm relative overflow-hidden bg-gradient-to-br from-white to-teal-50/10">
-                        <div class="absolute top-0 left-0 w-1.5 h-full bg-teal-600"></div>
-                            <h4 class="font-bold text-xs sm:text-sm text-teal-800 uppercase tracking-wider mb-3 flex items-center whitespace-nowrap">
-                                <i class="fa-solid fa-credit-card mr-2 text-xs shrink-0"></i>Thông Tin Thanh Toán Chuyển Khoản
-                            </h4>
-                        
-                        <div class="flex flex-col sm:flex-row gap-4 items-center">
-                            <div class="flex-grow space-y-2.5 w-full text-sm">
-                                <div class="flex justify-between items-center py-1 border-b border-gray-100">
-                                    <span class="text-gray-500 font-medium">Ngân hàng:</span>
-                                    <span class="font-bold text-gray-900 bg-gray-100 px-2 py-0.5 rounded">TPBANK (TPB)</span>
-                                </div>
-                                
-                                <div class="flex flex-col xs:flex-row xs:justify-between xs:items-center py-1 border-b border-gray-100 gap-1">
-                                    <span class="text-gray-500 font-medium text-xs sm:text-sm shrink-0">Số tài khoản:</span>
-                                    <div class="flex items-center space-x-2 max-w-full justify-between xs:justify-end w-full xs:w-auto">
-                                        <button onclick="copySTK()" class="text-[10px] bg-teal-50 text-teal-600 hover:bg-teal-600 hover:text-white font-semibold px-2 py-1 rounded border border-teal-200 transition-all active:scale-95 flex items-center gap-1 shrink-0" title="Sao chép số tài khoản">
-                                            <i class="fa-regular fa-copy"></i> <span id="copy-btn-text">Copy</span>
-                                        </button>
-                                        <span id="stk-text" class="font-mono font-black text-teal-600 text-lg sm:text-lg tracking-normal sm:tracking-wider whitespace-nowrap">02738162203</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex justify-between items-center py-1">
-                                    <span class="text-gray-500 font-medium">Chủ tài khoản:</span>
-                                    <span class="font-extrabold text-gray-900 uppercase tracking-wide">DANG QUOC DUNG</span>
-                                </div>
-                            </div>
-                            
-                            <div class="w-full h-auto bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-col items-center justify-center overflow-hidden group">
-                                <img src="image/QR CODE.png" alt="Mã QR Thanh Toán" class="max-w-[250px] w-full h-auto object-contain rounded-lg transition-transform duration-300 group-hover:scale-105">
-                            </div>
+                    <div class="p-3 bg-white rounded-xl border border-gray-200 shadow-sm flex items-center space-x-2.5 hover:border-teal-500 transition-all duration-300 group">
+                        <div class="bg-teal-50 text-teal-600 p-2.5 rounded-lg text-lg group-hover:bg-teal-600 group-hover:text-white transition-colors duration-300 shrink-0">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <h4 class="font-bold text-sm text-gray-500 tracking-tight" data-i18n="contact_zalo">Tư vấn Zalo 24/7</h4>
+                            <p class="text-base mt-0.5 font-mono">
+                                <a href="https://zalo.me/0942135506" target="_blank" rel="noopener noreferrer" class="text-teal-600 hover:text-teal-700 hover:underline font-black tracking-wide">0942 135 506</a>
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex flex-col space-y-3 w-full min-h-[330px] lg:h-auto">
-                    <form id="map-search-form" class="flex items-center bg-white border border-gray-300 rounded-xl p-1 shadow-sm focus-within:border-teal-500 focus-within:ring-2 focus-within:ring-teal-500/10 transition-all duration-300">
-                        <div class="pl-2.5 text-gray-400 text-sm"><i class="fa-solid fa-magnifying-glass"></i></div>
-                        <input type="text" id="map-search-input" placeholder="Tìm kiếm vị trí trên bản đồ..." value="21 Lê Văn Lương, Thanh Xuân, Hà Nội" class="w-full pl-1.5 pr-2 py-1.5 text-xs bg-transparent border-0 focus:outline-none text-gray-800 font-medium">
-                        <button type="submit" class="bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs px-4 py-1.5 rounded-lg transition shadow-sm shrink-0">Tìm kiếm</button>
-                    </form>
-
-                    <div class="flex-grow rounded-xl overflow-hidden shadow-sm border border-gray-200 relative min-h-[280px]">
-                        <iframe id="google-map-iframe" src="https://maps.google.com/maps?q=21%20L%C3%AA%20V%C4%83n%20L%C6%B0%C6%A1ng,%20Thanh%20Xu%C3%A2n,%20H%C3%A0%20N%E1%BB%99i&t=&z=15&ie=UTF8&iwloc=&output=embed" class="absolute inset-0 w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="p-4 bg-white rounded-xl border-2 border-teal-600/20 shadow-sm relative overflow-hidden bg-gradient-to-br from-white to-teal-50/10">
+                    <div class="absolute top-0 left-0 w-1.5 h-full bg-teal-600"></div>
+                    <h4 class="font-bold text-xs sm:text-sm text-teal-800 uppercase tracking-wider mb-3 flex items-center whitespace-nowrap" data-i18n="payment_title">
+                        <i class="fa-solid fa-credit-card mr-2 text-xs shrink-0"></i>Thông Tin Thanh Toán Chuyển Khoản
+                    </h4>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 items-center">
+                        <div class="flex-grow space-y-2.5 w-full text-sm">
+                            <div class="flex justify-between items-center py-1 border-b border-gray-100">
+                                <span class="text-gray-500 font-medium" data-i18n="payment_bank">Ngân hàng:</span>
+                                <span class="font-bold text-gray-900 bg-gray-100 px-2 py-0.5 rounded">TPBANK (TPB)</span>
+                            </div>
+                            <div class="flex flex-col xs:flex-row xs:justify-between xs:items-center py-1 border-b border-gray-100 gap-1">
+                                <span class="text-gray-500 font-medium text-xs sm:text-sm shrink-0" data-i18n="payment_acc_num">Số tài khoản:</span>
+                                <div class="flex items-center space-x-2 max-w-full justify-between xs:justify-end w-full xs:w-auto">
+                                    <button onclick="copySTK()" class="text-[10px] bg-teal-50 text-teal-600 hover:bg-teal-600 hover:text-white font-semibold px-2 py-1 rounded border border-teal-200 transition-all active:scale-95 flex items-center gap-1 shrink-0">
+                                        <i class="fa-regular fa-copy"></i> <span id="copy-btn-text">Copy</span>
+                                    </button>
+                                    <span id="stk-text" class="font-mono font-black text-teal-600 text-lg tracking-normal whitespace-nowrap">02738162203</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center py-1">
+                                <span class="text-gray-500 font-medium" data-i18n="payment_acc_holder">Chủ tài khoản:</span>
+                                <span class="font-extrabold text-gray-900 uppercase tracking-wide">DANG QUOC DUNG</span>
+                            </div>
+                        </div>
+                        <div class="w-full h-auto bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-col items-center justify-center overflow-hidden group">
+                            <img src="image/QR CODE.png" alt="Mã QR Thanh Toán" class="max-w-[250px] w-full h-auto object-contain rounded-lg transition-transform duration-300 group-hover:scale-105">
+                        </div>
                     </div>
                 </div>
-                
             </div>
+
+            <div class="flex flex-col space-y-3 w-full min-h-[330px] lg:h-auto">
+                <form id="map-search-form" class="flex items-center bg-white border border-gray-300 rounded-xl p-1 shadow-sm focus-within:border-teal-500 focus-within:ring-2 focus-within:ring-teal-500/10 transition-all duration-300">
+                    <div class="pl-2.5 text-gray-400 text-sm"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <input type="text" id="map-search-input" placeholder="Tìm kiếm vị trí trên bản đồ..." value="21 Lê Văn Lương, Thanh Xuân, Hà Nội" class="w-full pl-1.5 pr-2 py-1.5 text-xs bg-transparent border-0 focus:outline-none text-gray-800 font-medium">
+                    <button type="submit" class="bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs px-4 py-1.5 rounded-lg transition shadow-sm shrink-0" data-i18n="map_btn">Tìm kiếm</button>
+                </form>
+                <div class="flex-grow rounded-xl overflow-hidden shadow-sm border border-gray-200 relative min-h-[280px]">
+                    <iframe id="google-map-iframe" src="https://maps.google.com/maps?q=21%20L%C3%AA%20V%C4%83n%20L%C6%B0%C6%A1ng,%20Thanh%20Xu%C3%A2n,%20H%C3%A0%20N%E1%BB%99i&t=&z=15&ie=UTF8&iwloc=&output=embed" class="absolute inset-0 w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
     </section>
 
     <footer class="bg-gray-900 text-gray-400 text-xs py-6 border-t border-gray-800 text-center">
@@ -324,16 +296,16 @@
     <div id="cart-modal" class="fixed inset-0 bg-black/50 z-50 flex justify-end opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="bg-white w-full max-w-md h-full shadow-2xl flex flex-col translate-x-full transition-transform duration-300" id="cart-modal-content">
             <div class="p-4 border-b border-gray-200 flex justify-between items-center bg-gray-50">
-                <h3 class="text-lg font-bold text-gray-900 flex items-center"><i class="fa-solid fa-bag-shopping mr-2 text-teal-600"></i> Giỏ Hàng Của Bạn</h3>
+                <h3 class="text-lg font-bold text-gray-900 flex items-center" data-i18n="cart_title"><i class="fa-solid fa-bag-shopping mr-2 text-teal-600"></i> Giỏ Hàng Của Bạn</h3>
                 <button id="cart-close-btn" class="text-gray-400 hover:text-gray-600 p-1 rounded-lg text-lg"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div id="cart-items-list" class="flex-grow p-4 overflow-y-auto space-y-4"></div>
             <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
                 <div class="flex justify-between items-center text-sm font-semibold text-gray-900">
-                    <span>Tổng tiền thanh toán:</span>
+                    <span data-i18n="cart_total_text">Tổng tiền thanh toán:</span>
                     <span id="cart-total-price" class="text-teal-600 text-lg font-extrabold">0 đ</span>
                 </div>
-                <button id="checkout-btn" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 rounded-xl shadow-lg transition flex items-center justify-center space-x-2">
+                <button id="checkout-btn" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 rounded-xl shadow-lg transition flex items-center justify-center space-x-2" data-i18n="cart_checkout_btn">
                     <i class="fa-solid fa-paper-plane"></i>
                     <span>Gửi Đơn Hàng Qua Zalo</span>
                 </button>
@@ -341,19 +313,7 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'vi', 
-                // Khai báo rõ các ngôn ngữ được dịch
-                includedLanguages: 'vi,en,zh-CN,fr,ja,ko', 
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                multilanguage: true
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+    <script src="languages.js"></script>
     <script>
         const clockBtn = document.getElementById('country-clock-btn');
         const clockMenu = document.getElementById('country-clock-menu');
@@ -363,14 +323,14 @@
 
         let activeTimezone = 'Asia/Ho_Chi_Minh'; 
 
-        // Khai báo bản đồ ánh xạ múi giờ tương ứng với mã ngôn ngữ dịch của Google
+        // Bản đồ liên kết múi giờ với ngôn ngữ trong languages.js
         const timezoneToLangMap = {
             'Asia/Ho_Chi_Minh': 'vi', 
             'America/New_York': 'en', 
             'Europe/Paris': 'fr',     
             'Asia/Tokyo': 'ja',       
             'Asia/Seoul': 'ko',       
-            'Australia/Sydney': 'en'  
+            'Asia/Shanghai': 'zh'  
         };
 
         clockBtn.addEventListener('click', (e) => {
@@ -386,145 +346,37 @@
             }
         });
 
-        // ĐỔI QUỐC GIA + KÍCH HOẠT DỊCH TOÀN BỘ TRANG WEB NGẦM
+        // HÀM CHUYỂN ĐỔI NGÔN NGỮ KHI CLICK CHỌN QUỐC GIA TRÊN TOPBAR
         function changeActiveClock(timezone, icon, name) {
             activeTimezone = timezone;
             selectedClockIcon.innerHTML = icon;
             selectedClockName.innerText = name;
             updateClocks();
             
-            // Kích hoạt lõi dịch thuật dựa trên mã ngôn ngữ tương ứng
             const targetLang = timezoneToLangMap[timezone] || 'vi';
-            translatePageTo(targetLang);
+            localStorage.setItem('selectedLanguage', targetLang);
+            
+            // Gọi hàm dịch từ file languages.js
+            updateContent(targetLang);
 
             clockMenu.classList.add('opacity-0');
             clockMenu.classList.add('pointer-events-none');
         }
 
-        // Ép dịch ngầm bằng phương thức điều phối sự kiện chuyên sâu vào cấu trúc DOM của Google Translate
-        function translatePageTo(langCode) {
-            const googleSelect = document.querySelector('#google_translate_element select');
-            if (googleSelect) {
-                googleSelect.value = langCode;
-                // Phát ra đồng thời cả 2 sự kiện để mọi phiên bản nhân Google đều bắt được thay đổi để dịch toàn bộ thẻ
-                googleSelect.dispatchEvent(new Event('change', { bubbles: true }));
-                googleSelect.dispatchEvent(new Event('click', { bubbles: true }));
-            } else {
-                // Đề phòng trường hợp API của Google tải chậm hoặc chưa render xong dropdown
-                setTimeout(() => translatePageTo(langCode), 200);
-            }
-        }
-
-        // --- ĐOẠN CODE MỚI: TỰ CẤU HÌNH SẢN PHẨM ---
+        // Kho mảng dữ liệu gốc
         const products = [
-            {
-                id: 1,
-                name: "Áo polo thêu hình lân",
-                category: "Thời trang",
-                priceNumber: 450000, 
-                price: "450.000 đ", 
-                image: "image/ao.jpg", 
-                badge: "Mới" 
-            },
-            {   
-                id: 2,
-                name: "Áo polo thể thao",
-                category: "Thời trang",
-                priceNumber: 350000,
-                price: "350.000 đ",
-                image: "image/aothethao.jpg", 
-                badge: "Mới"
-            },
-            {
-                id: 3,
-                name: "Áo thun thêu sao vàng",
-                category: "Thời trang",
-                priceNumber: 350000,
-                price: "350.000 đ",
-                image: "image/aovietnam.jpg",
-                badge: "Bán chạy"
-            },
-            {
-                id: 4,
-                name: "Quần áo dài thể thao",
-                category: "Thời trang",
-                priceNumber: 1000000,
-                price: "1.000.000 đ",
-                image: "image/setbongban.jpg",
-                badge: "Mới"
-            },
-            {
-                id: 5,
-                name: "Túi đựng thể thao",
-                category: "Dụng cụ thể thao",
-                priceNumber: 250000, 
-                price: "250.000 đ", 
-                image: "image/baovotbongban.jpg", 
-                badge: null 
-            },
-            {
-                id: 6,
-                name: "Thảm tập Yoga",
-                category: "Dụng cụ thể thao",
-                priceNumber: 320000,
-                price: "320.000 đ",
-                image: "image/yogathamtap.jpg", 
-                badge: null
-            },
-            {
-                id: 7,
-                name: "Bộ dụng cụ trị liệu cơ bắp ( 5 món )",
-                category: "Dụng cụ thể thao - Chăm sóc sức khỏe",
-                priceNumber: 5000000,
-                price: "5.000.000 đ",
-                image: "image/dungcutraimacco.jpg",
-                badge: null 
-            },
-            {
-                id: 8,
-                name: "Charm/Nhẫn bạc cạo gió",
-                category: "Phụ kiện",
-                priceNumber: 5500000,
-                price: "5.500.000 đ",
-                image: "image/charm,matdaychuyenbactadungcucaogio.jpg",
-                badge: "Mới"
-            },
-            {
-                id: 9,
-                name: "Bản đồ quả địa cầu",
-                category: "Phụ kiện",
-                priceNumber: 800000, 
-                price: "800.000 đ", 
-                image: "image/quadiacau.jpg", 
-                badge: "Bán chạy" 
-            },
-            {
-                id: 10,
-                name: "Vòng tay chỉ ngũ sắc gắn đá phong thủy",
-                category: "Phụ kiện",
-                priceNumber: 320000,
-                price: "320.000 đ",
-                image: "image/vong.jpg", 
-                badge: null
-            },
-            {
-                id: 11,
-                name: "Vòng tay chỉ ngũ sắc gắn đá phong thủy",
-                category: "Phụ kiện",
-                priceNumber: 320000,
-                price: "320.000 đ",
-                image: "image/vong1.jpg",
-                badge: null 
-            },
-            {
-                id: 12,
-                name: "10 hũ coffee hòa tan nước nòng/lạnh",
-                category: "Phụ kiện",
-                priceNumber: 200000,
-                price: "200.000 đ",
-                image: "image/coffee.jpg",
-                badge: null
-            }
+            { id: 1, name: "Áo thun thêu sao vàng", category: "Thời trang", priceNumber: 350000, price: "350.000 đ", image: "image/aovietnam.jpg", badge: "Bán chạy" },
+            { id: 2, name: "Áo polo thêu hình lân", category: "Thời trang", priceNumber: 450000, price: "450.000 đ", image: "image/ao.jpg", badge: "Mới" },
+            { id: 3, name: "Áo polo thể thao", category: "Thời trang", priceNumber: 350000, price: "350.000 đ", image: "image/aothethao.jpg", badge: "Mới" },
+            { id: 4, name: "Quần áo dài thể thao", category: "Thời trang", priceNumber: 1000000, price: "1.000.000 đ", image: "image/setbongban.jpg", badge: "Mới" },
+            { id: 5, name: "Thảm tập Yoga", category: "Dụng cụ thể thao", priceNumber: 320000, price: "320.000 đ", image: "image/yogathamtap.jpg", badge: null },
+            { id: 6, name: "Bộ dụng cụ trị liệu cơ bắp ( 5 món )", category: "Dụng cụ thể thao - Chăm sóc sức khỏe", priceNumber: 5000000, price: "5.000.000 đ", image: "image/dungcutraimacco.jpg", badge: null },
+            { id: 7, name: "Túi đựng thể thao", category: "Dụng cụ thể thao", priceNumber: 250000, price: "250.000 đ", image: "image/baovotbongban.jpg", badge: null },
+            { id: 8, name: "Charm/Nhẫn bạc cạo gió", category: "Phụ kiện", priceNumber: 5500000, price: "5.500.000 đ", image: "image/charm,matdaychuyenbactadungcucaogio.jpg", badge: "Mới" },
+            { id: 9, name: "Bản đồ quả địa cầu", category: "Phụ kiện", priceNumber: 800000, price: "800.000 đ", image: "image/quadiacau.jpg", badge: "Bán chạy" },
+            { id: 10, name: "Vòng tay chỉ ngũ sắc gắn đá phong thủy", category: "Phụ kiện", priceNumber: 320000, price: "320.000 đ", image: "image/vong.jpg", badge: null },
+            { id: 11, name: "Vòng tay chỉ ngũ sắc gắn đá phong thủy", category: "Phụ kiện", priceNumber: 320000, price: "320.000 đ", image: "image/vong1.jpg", badge: null },
+            { id: 12, name: "10 hũ coffee hòa tan nước nòng/lạnh", category: "Phụ kiện", priceNumber: 200000, price: "200.000 đ", image: "image/coffee.jpg", badge: null }
         ];
 
         let cart = [];
@@ -547,6 +399,7 @@
         const cartTotalPrice = document.getElementById('cart-total-price');
         const checkoutBtn = document.getElementById('checkout-btn');
 
+        // Hàm hiển thị sản phẩm kết hợp xử lý đa ngôn ngữ động
         function displayProducts(page) {
             productContainer.style.opacity = '0';
             productContainer.style.transform = 'translateY(10px)';
@@ -556,26 +409,31 @@
                 const startIndex = (page - 1) * itemsPerPage;
                 const endIndex = startIndex + itemsPerPage;
                 const paginatedProducts = products.slice(startIndex, endIndex);
+                
+                const currentLang = localStorage.getItem('selectedLanguage') || 'vi';
 
                 paginatedProducts.forEach(product => {
+                    // Chuyển đổi ngôn ngữ của sản phẩm trước khi render ra UI
+                    const localProduct = getLocalizedProduct(product, currentLang);
+
                     const productCard = document.createElement('div');
                     productCard.className = "bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col group";
                     
                     productCard.innerHTML = `
                         <div class="relative overflow-hidden bg-gray-100 pt-[75%]">
-                            <img src="${product.image}" alt="${product.name}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-                            ${product.badge ? `<span class="absolute top-3 left-3 bg-red-500 text-white font-semibold text-[10px] px-2 py-0.5 rounded-full uppercase shadow-sm">${product.badge}</span>` : ''}
-                            <button onclick="addToCart(${product.id})" class="absolute bottom-3 right-3 bg-white/90 hover:bg-teal-600 hover:text-white p-2.5 rounded-xl shadow-md transition-all opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 text-gray-700 z-10">
+                            <img src="${localProduct.image}" alt="${localProduct.name}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                            ${localProduct.badge ? `<span class="absolute top-3 left-3 bg-red-500 text-white font-semibold text-[10px] px-2 py-0.5 rounded-full uppercase shadow-sm">${localProduct.badge}</span>` : ''}
+                            <button onclick="addToCart(${localProduct.id})" class="absolute bottom-3 right-3 bg-white/90 hover:bg-teal-600 hover:text-white p-2.5 rounded-xl shadow-md transition-all opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 text-gray-700 z-10">
                                 <i class="fa-solid fa-cart-plus"></i>
                             </button>
                         </div>
                         <div class="p-5 flex-grow flex flex-col justify-between space-y-3">
                             <div>
-                                <span class="text-xs font-semibold uppercase tracking-wider text-teal-600">${product.category}</span>
-                                <h3 class="font-bold text-gray-950 mt-1 group-hover:text-teal-600 transition text-sm sm:text-base line-clamp-1">${product.name}</h3>
+                                <span class="text-xs font-semibold uppercase tracking-wider text-teal-600">${localProduct.category}</span>
+                                <h3 class="font-bold text-gray-950 mt-1 group-hover:text-teal-600 transition text-sm sm:text-base line-clamp-1">${localProduct.name}</h3>
                             </div>
                             <div class="flex items-center justify-between pt-2 border-t border-gray-50">
-                                <span class="font-extrabold text-teal-600 text-sm sm:text-base">${product.price}</span>
+                                <span class="font-extrabold text-teal-600 text-sm sm:text-base">${localProduct.price}</span>
                                 <span class="text-xs text-yellow-500 flex items-center space-x-0.5"><i class="fa-solid fa-star"></i> <span>4.8</span></span>
                             </div>
                         </div>
@@ -627,6 +485,7 @@
             }
         }
 
+        // Hàm cập nhật giỏ hàng hỗ trợ dịch tên sản phẩm đang chọn đa ngữ
         function updateCartUI() {
             const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
             cartBadge.innerText = totalCount;
@@ -641,11 +500,14 @@
                 cartToggleBtn.classList.remove('border-teal-400', 'bg-teal-50/50');
             }
 
+            const currentLang = localStorage.getItem('selectedLanguage') || 'vi';
+
             if (cart.length === 0) {
+                const emptyMsg = translations[currentLang]?.cart_empty || "Giỏ hàng trống rỗng";
                 cartItemsList.innerHTML = `
                     <div class="h-full flex flex-col items-center justify-center text-gray-400 space-y-2 py-12">
                         <i class="fa-solid fa-basket-shopping text-4xl text-gray-300"></i>
-                        <p class="text-sm">Giỏ hàng trống rỗng</p>
+                        <p class="text-sm">${emptyMsg}</p>
                     </div>`;
                 cartTotalPrice.innerText = '0 đ';
                 checkoutBtn.disabled = true;
@@ -659,21 +521,22 @@
             
             let totalAmount = 0;
             cart.forEach(item => {
-                totalAmount += item.priceNumber * item.quantity;
+                const localItem = getLocalizedProduct(item, currentLang);
+                totalAmount += localItem.priceNumber * localItem.quantity;
                 const itemRow = document.createElement('div');
-                itemRow.className = "flex items-center space-x-3 p-3 bg-gray-50 border border-gray-100 rounded-xl animate-[fadeIn_0.3s_ease-out]";
+                itemRow.className = "flex items-center space-x-3 p-3 bg-gray-50 border border-gray-100 rounded-xl";
                 itemRow.innerHTML = `
-                    <img src="${item.image}" class="w-16 h-16 object-cover rounded-lg bg-white shrink-0 border border-gray-200">
+                    <img src="${localItem.image}" class="w-16 h-16 object-cover rounded-lg bg-white shrink-0 border border-gray-200">
                     <div class="flex-grow min-w-0">
-                        <h4 class="text-sm font-bold text-gray-900 truncate">${item.name}</h4>
-                        <p class="text-xs text-teal-600 font-extrabold mt-0.5">${item.price}</p>
+                        <h4 class="text-sm font-bold text-gray-900 truncate">${localItem.name}</h4>
+                        <p class="text-xs text-teal-600 font-extrabold mt-0.5">${localItem.price}</p>
                         <div class="flex items-center space-x-2 mt-1.5">
-                            <button onclick="changeQuantity(${item.id}, -1)" class="w-5 h-5 bg-white border border-gray-300 rounded text-xs flex items-center justify-center font-bold text-gray-600 hover:bg-gray-100">-</button>
-                            <span class="text-xs font-semibold text-gray-800 w-4 text-center">${item.quantity}</span>
-                            <button onclick="changeQuantity(${item.id}, 1)" class="w-5 h-5 bg-white border border-gray-300 rounded text-xs flex items-center justify-center font-bold text-gray-600 hover:bg-gray-100">+</button>
+                            <button onclick="changeQuantity(${localItem.id}, -1)" class="w-5 h-5 bg-white border border-gray-300 rounded text-xs flex items-center justify-center font-bold text-gray-600 hover:bg-gray-100">-</button>
+                            <span class="text-xs font-semibold text-gray-800 w-4 text-center">${localItem.quantity}</span>
+                            <button onclick="changeQuantity(${localItem.id}, 1)" class="w-5 h-5 bg-white border border-gray-300 rounded text-xs flex items-center justify-center font-bold text-gray-600 hover:bg-gray-100">+</button>
                         </div>
                     </div>
-                    <button onclick="removeFromCart(${item.id})" class="text-gray-400 hover:text-red-500 p-2 text-sm transition"><i class="fa-regular fa-trash-can"></i></button>
+                    <button onclick="removeFromCart(${localItem.id})" class="text-gray-400 hover:text-red-500 p-2 text-sm transition"><i class="fa-regular fa-trash-can"></i></button>
                 `;
                 cartItemsList.appendChild(itemRow);
             });
@@ -696,18 +559,27 @@
             if(e.target === cartModal) closeCart();
         });
 
+        // Xử lý gửi tin nhắn đơn hàng qua Zalo theo ngôn ngữ tương ứng
         checkoutBtn.addEventListener('click', () => {
-            let message = "Xin chào Apalu-Store, tôi muốn đặt mua các sản phẩm:\n";
+            const currentLang = localStorage.getItem('selectedLanguage') || 'vi';
+            const prefix = translations[currentLang]?.zalo_msg_prefix || "Xin chào Apalu-Store, tôi muốn đặt mua:\n";
+            const totalText = translations[currentLang]?.zalo_msg_total || "Tổng cộng: ";
+            
+            let message = prefix;
             cart.forEach((item, index) => {
-                message += `${index + 1}. ${item.name} (SL: ${item.quantity}) - Giá: ${item.price}\n`;
+                const localItem = getLocalizedProduct(item, currentLang);
+                message += `${index + 1}. ${localItem.name} (SL: ${localItem.quantity}) - Giá: ${localItem.price}\n`;
             });
-            message += `Tổng cộng: ${cartTotalPrice.innerText}`;
+            message += `${totalText}${cartTotalPrice.innerText}`;
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://zalo.me/0942135506?text=${encodedMessage}`, '_blank');
         });
 
         function updatePaginationControls() {
-            pageIndicator.innerText = `Trang ${currentPage} / ${totalPages}`;
+            const currentLang = localStorage.getItem('selectedLanguage') || 'vi';
+            const pageWord = translations[currentLang]?.page_text || "Trang";
+
+            pageIndicator.innerText = `${pageWord} ${currentPage} / ${totalPages}`;
             prevBtn.disabled = currentPage === 1;
             nextBtn.disabled = currentPage === totalPages;
 
@@ -745,7 +617,6 @@
 
         function updateClocks() {
             const now = new Date();
-            
             const optionsLocal = { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
             document.getElementById('local-clock').innerText = now.toLocaleTimeString('vi-VN', optionsLocal);
 
@@ -754,7 +625,7 @@
                 selectedClockTime.innerText = now.toLocaleTimeString('en-GB', optionsActive);
             }
 
-            const previewTimezones = ['Asia/Ho_Chi_Minh', 'America/New_York', 'Europe/Paris', 'Asia/Tokyo', 'Asia/Seoul', 'Australia/Sydney'];
+            const previewTimezones = ['Asia/Ho_Chi_Minh', 'America/New_York', 'Europe/Paris', 'Asia/Tokyo', 'Asia/Seoul', 'Asia/Shanghai'];
             previewTimezones.forEach(tz => {
                 const idString = `preview-${tz.replace('/', '-')}`;
                 const element = document.getElementById(idString);
@@ -767,20 +638,38 @@
 
         setInterval(updateClocks, 1000);
         updateClocks();
-        displayProducts(currentPage);
 
         function copySTK() {
-         const stk = document.getElementById('stk-text').innerText;
-             navigator.clipboard.writeText(stk).then(() => {
-         const btnText = document.getElementById('copy-btn-text');
-             btnText.innerText = "Đã chép!";
-         setTimeout(() => {
-             btnText.innerText = "Copy";
-            }, 2000);
-          }).catch(err => {
-            console.error('Không thể sao chép: ', err);
-         });
+            const stk = document.getElementById('stk-text').innerText;
+            navigator.clipboard.writeText(stk).then(() => {
+                const btnText = document.getElementById('copy-btn-text');
+                btnText.innerText = "Đã chép!";
+                setTimeout(() => { btnText.innerText = "Copy"; }, 2000);
+            }).catch(err => { console.error('Không thể sao chép: ', err); });
         }
+
+        // TỰ ĐỘNG KHÔI PHỤC NGÔN NGỮ KHI KHỞI CHẠY TRANG
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('selectedLanguage') || 'vi';
+            
+            // Tìm múi giờ tương ứng với ngôn ngữ đã lưu để đồng bộ đồng hồ Topbar
+            const matchedTimezone = Object.keys(timezoneToLangMap).find(key => timezoneToLangMap[key] === savedLang);
+            if (matchedTimezone) {
+                activeTimezone = matchedTimezone;
+                let icon = '🇻🇳', name = 'Việt Nam';
+                if(matchedTimezone === 'America/New_York') { icon = '🇺🇸'; name = 'English'; }
+                else if(matchedTimezone === 'Europe/Paris') { icon = '🇫🇷'; name = 'Français'; }
+                else if(matchedTimezone === 'Asia/Tokyo') { icon = '🇯🇵'; name = '日本語'; }
+                else if(matchedTimezone === 'Asia/Seoul') { icon = '🇰🇷'; name = '한국어'; }
+                else if(matchedTimezone === 'Asia/Shanghai') { icon = '🇨🇳'; name = '中文'; }
+                
+                selectedClockIcon.innerHTML = icon;
+                selectedClockName.innerText = name;
+            }
+            
+            // Chạy dịch tĩnh và động toàn bộ trang
+            updateContent(savedLang);
+        });
     </script>
 </body>
 </html>

@@ -1,0 +1,369 @@
+// Kho dữ liệu ngôn ngữ dịch thuật kết hợp (Hỗ trợ 6 ngôn ngữ theo hệ thống múi giờ của cửa hàng)
+const translations = {
+    vi: {
+        // Navigation & Topbar
+        nav_home: "Trang chủ",
+        nav_products: "Sản phẩm",
+        nav_contact: "Liên hệ",
+        hanoi_clock: "Hà Nội:",
+        
+        // Hero Banner
+        hero_badge: "☯️ Tuyệt Tác Song Ngư Hội Tụ 2026",
+        hero_title: "Vòng Tuần Hoàn Của Thịnh Vượng & Bình Yên",
+        hero_desc: "Nơi cặp cá chép Koi uốn lượn thướt tha tạo thành biểu tượng Song Ngư hoàn mỹ, mang lại dòng chảy năng lượng cân bằng, may mắn và tài lộc vĩnh cửu.",
+        hero_btn: "Chiêm Ngưỡng Tuyệt Tác 🌊",
+        
+        // Product Section Header
+        section_title: "Sản Phẩm Nổi Bật",
+        section_desc: "Hiển thị 6 sản phẩm mỗi trang trên tổng số 30 sản phẩm",
+        page_text: "Trang",
+        btn_prev: "<i class='fa-solid fa-chevron-left mr-1'></i> Trước",
+        btn_next: "Sau <i class='fa-solid fa-chevron-right ml-1'></i>",
+        
+        // Contact & Payment Section
+        contact_title: "Thông Tin Liên Hệ & Thanh Toán",
+        contact_desc: "Gặp bất cứ khó khăn nào? Hãy liên hệ trực tiếp với chúng tôi theo thông tin chi tiết bên dưới:",
+        contact_address_title: "Địa chỉ cửa hàng",
+        contact_address_detail: "21 Lê Văn Lương, Thanh Xuân, HN",
+        contact_zalo: "Tư vấn Zalo 24/7",
+        payment_title: "<i class='fa-solid fa-credit-card mr-2 text-xs shrink-0'></i>Thông Tin Thanh Toán Chuyển Khoản",
+        payment_bank: "Ngân hàng:",
+        payment_acc_num: "Số tài khoản:",
+        payment_acc_holder: "Chủ tài khoản:",
+        map_btn: "Tìm kiếm",
+        map_placeholder: "Tìm kiếm vị trí trên bản đồ...",
+        
+        // Cart Modal
+        cart_title: "<i class='fa-solid fa-bag-shopping mr-2 text-teal-600'></i> Giỏ Hàng Của Bạn",
+        cart_empty: "Giỏ hàng trống rỗng",
+        cart_total_text: "Tổng tiền thanh toán:",
+        cart_checkout_btn: "<i class='fa-solid fa-paper-plane'></i> Gửi Đơn Hàng Qua Zalo",
+        zalo_msg_prefix: "Xin chào Apalu-Store, tôi muốn đặt mua các sản phẩm:\n",
+        zalo_msg_total: "Tổng cộng: ",
+
+        // Categories & Badges
+        cat_fashion: "Thời trang",
+        cat_sports: "Dụng cụ thể thao",
+        cat_health: "Dụng cụ thể thao - Chăm sóc sức khỏe",
+        cat_accessories: "Phụ kiện",
+        badge_banchay: "Bán chạy",
+        badge_moi: "Mới",
+
+        // 12 Tên Sản Phẩm Động
+        p1: "Áo thun thêu sao vàng",
+        p2: "Áo polo thêu hình lân",
+        p3: "Áo polo thể thao",
+        p4: "Quần áo dài thể thao",
+        p5: "Thảm tập Yoga",
+        p6: "Bộ dụng cụ trị liệu cơ bắp ( 5 món )",
+        p7: "Túi đựng thể thao",
+        p8: "Charm/Nhẫn bạc cạo gió",
+        p9: "Bản đồ quả địa cầu",
+        p10: "Vòng tay chỉ ngũ sắc gắn đá phong thủy",
+        p11: "Vòng tay chỉ ngũ sắc gắn đá phong thủy",
+        p12: "10 hũ coffee hòa tan nước nóng/lạnh"
+    },
+    en: {
+        nav_home: "Home",
+        nav_products: "Products",
+        nav_contact: "Contact",
+        hanoi_clock: "Hanoi:",
+        hero_badge: "☯️ The Pisces Koi Collection 2026",
+        hero_title: "The Eternal Flow of Fortune & Harmony",
+        hero_desc: "Where twin Koi fish glide in perfect harmony, forming the sacred Pisces emblem to bring balance, luck, and boundless prosperity to your life.",
+        hero_btn: "Explore The Collection 🌊",
+        section_title: "Featured Products",
+        section_desc: "Showing 6 products per page out of 30 products",
+        page_text: "Page",
+        btn_prev: "<i class='fa-solid fa-chevron-left mr-1'></i> Prev",
+        btn_next: "Next <i class='fa-solid fa-chevron-right ml-1'></i>",
+        contact_title: "Contact & Payment Information",
+        contact_desc: "Having any trouble? Please contact us directly using the details below:",
+        contact_address_title: "Store Address",
+        contact_address_detail: "21 Le Van Luong, Thanh Xuan, Hanoi",
+        contact_zalo: "Zalo Support 24/7",
+        payment_title: "<i class='fa-solid fa-credit-card mr-2 text-xs shrink-0'></i>Bank Transfer Payment Information",
+        payment_bank: "Bank:",
+        payment_acc_num: "Account Number:",
+        payment_acc_holder: "Account Holder:",
+        map_btn: "Search",
+        map_placeholder: "Search location on map...",
+        cart_title: "<i class='fa-solid fa-bag-shopping mr-2 text-teal-600'></i> Your Shopping Cart",
+        cart_empty: "Your cart is empty",
+        cart_total_text: "Total payment:",
+        cart_checkout_btn: "<i class='fa-solid fa-paper-plane'></i> Send Order via Zalo",
+        zalo_msg_prefix: "Hello Apalu-Store, I would like to order the following products:\n",
+        zalo_msg_total: "Total: ",
+        cat_fashion: "Fashion",
+        cat_sports: "Sports Equipment",
+        cat_health: "Sports & Health Care",
+        cat_accessories: "Accessories",
+        badge_banchay: "Best Seller",
+        badge_moi: "New",
+        p1: "Gold Star Embroidered T-Shirt",
+        p2: "Qilin Embroidered Polo Shirt",
+        p3: "Sport Polo Shirt",
+        p4: "Long Tracksuit Set",
+        p5: "Yoga Mat",
+        p6: "Muscle Therapy Kit (5 pieces)",
+        p7: "Sports Duffel Bag",
+        p8: "Silver Scraping Charm/Ring",
+        p9: "World Globe Map",
+        p10: "Five-Color Cord Feng Shui Bracelet",
+        p11: "Five-Color Cord Feng Shui Bracelet",
+        p12: "10 Jars of Hot/Cold Instant Coffee"
+    },
+    zh: {
+        nav_home: "首页",
+        nav_products: "产品中心",
+        nav_contact: "联系我们",
+        hanoi_clock: "河内:",
+        hero_badge: "☯️ 2026 双鱼锦鲤杰作汇聚",
+        hero_title: "繁荣与和谐的永恒循环",
+        hero_desc: "双鲤鱼优美地盘旋，构成完美的双鱼座标志，为您带来平衡、幸运与永恒的财富能量流。",
+        hero_btn: "尽情欣赏杰作 🌊",
+        section_title: "热门商品",
+        section_desc: "每页显示 6 件商品，共 30 件商品",
+        page_text: "页码",
+        btn_prev: "<i class='fa-solid fa-chevron-left mr-1'></i> 上一页",
+        btn_next: "下一页 <i class='fa-solid fa-chevron-right ml-1'></i>",
+        contact_title: "联系方式与付款信息",
+        contact_desc: "遇到任何困难？请通过以下详细信息直接与我们联系：",
+        contact_address_title: "门店地址",
+        contact_address_detail: "河内市清春郡黎文良路21号",
+        contact_zalo: "Zalo 24/7 咨询",
+        payment_title: "<i class='fa-solid fa-credit-card mr-2 text-xs shrink-0'></i>银行转账付款信息",
+        payment_bank: "银行:",
+        payment_acc_num: "银行账号:",
+        payment_acc_holder: "开户名:",
+        map_btn: "搜索",
+        map_placeholder: "在地图上搜索位置...",
+        cart_title: "<i class='fa-solid fa-bag-shopping mr-2 text-teal-600'></i> 您的购物车",
+        cart_empty: "购物车空空如也",
+        cart_total_text: "应付总额:",
+        cart_checkout_btn: "<i class='fa-solid fa-paper-plane'></i> 通过 Zalo 发送订单",
+        zalo_msg_prefix: "您好 Apalu-Store，我想订购以下产品：\n",
+        zalo_msg_total: "总计: ",
+        cat_fashion: "时尚服饰",
+        cat_sports: "体育用品",
+        cat_health: "运动与健康护理",
+        cat_accessories: "潮流配饰",
+        badge_banchay: "热销",
+        badge_moi: "新品",
+        p1: "金星刺绣短袖 T 恤",
+        p2: "麒麟刺绣 Polo 衫",
+        p3: "运动 Polo 衫",
+        p4: "休闲运动长袖套装",
+        p5: "专业瑜伽垫",
+        p6: "肌肉理疗放松筋膜套装 (5件套)",
+        p7: "多功能运动收纳包",
+        p8: "纯银刮痧戒指/吊坠",
+        p9: "高清教学地球仪",
+        p10: "五彩绳风水开运手链",
+        p11: "五彩绳风水开运手链",
+        p12: "10罐装冷热双溶速溶咖啡"
+    },
+    fr: {
+        nav_home: "Accueil",
+        nav_products: "Produits",
+        nav_contact: "Contact",
+        hanoi_clock: "Hanoi:",
+        hero_badge: "☯️ Collection Poissons Koi 2026",
+        hero_title: "Le Flux Éternel de Fortune & d'Harmonie",
+        hero_desc: "Où les poissons Koi jumeaux glissent en parfaite harmonie, formant le symbole sacré des Poissons pour apporter équilibre, chance et prospérité.",
+        hero_btn: "Découvrir la Collection 🌊",
+        section_title: "Produits Vedettes",
+        section_desc: "Affichage de 6 produits par page sur un total de 30",
+        page_text: "Page",
+        btn_prev: "<i class='fa-solid fa-chevron-left mr-1'></i> Précédent",
+        btn_next: "Suivant <i class='fa-solid fa-chevron-right ml-1'></i>",
+        contact_title: "Informations de Contact & Paiement",
+        contact_desc: "Un problème ? Contactez-nous directement via les coordonnées ci-dessous :",
+        contact_address_title: "Adresse de la boutique",
+        contact_address_detail: "21 Le Van Luong, Thanh Xuan, Hanoi",
+        contact_zalo: "Support Zalo 24/7",
+        payment_title: "<i class='fa-solid fa-credit-card mr-2 text-xs shrink-0'></i>Infos de Paiement par Virement Bancaire",
+        payment_bank: "Banque :",
+        payment_acc_num: "Numéro de compte :",
+        payment_acc_holder: "Titulaire du compte :",
+        map_btn: "Chercher",
+        map_placeholder: "Chercher un lieu sur la carte...",
+        cart_title: "<i class='fa-solid fa-bag-shopping mr-2 text-teal-600'></i> Votre Panier",
+        cart_empty: "Votre panier est vide",
+        cart_total_text: "Total à payer :",
+        cart_checkout_btn: "<i class='fa-solid fa-paper-plane'></i> Envoyer via Zalo",
+        zalo_msg_prefix: "Bonjour Apalu-Store, je souhaite commander les produits suivants :\n",
+        zalo_msg_total: "Total : ",
+        cat_fashion: "Mode",
+        cat_sports: "Équipement de sport",
+        cat_health: "Sport & Soins de santé",
+        cat_accessories: "Accessoires",
+        badge_banchay: "Populaire",
+        badge_moi: "Nouveau",
+        p1: "T-shirt brodé étoile d'or",
+        p2: "Polo brodé motif Qilin",
+        p3: "Polo de sport",
+        p4: "Ensemble de survêtement long",
+        p5: "Tapis de yoga",
+        p6: "Kit de thérapie musculaire (5 pièces)",
+        p7: "Sac de sport",
+        p8: "Charm/Bague de grattage en argent",
+        p9: "Carte du globe terrestre",
+        p10: "Bracelet Feng Shui en cordon ngũ sắc",
+        p11: "Bracelet Feng Shui en cordon ngũ sắc",
+        p12: "10 pots de café instantané chaud/froid"
+    },
+    ja: {
+        nav_home: "ホーム",
+        nav_products: "商品一覧",
+        nav_contact: "お問い合わせ",
+        hanoi_clock: "ハノイ:",
+        hero_badge: "☯️ 双魚錦鯉傑作コレクション 2026",
+        hero_title: "繁栄と調和の永遠なる循環",
+        hero_desc: "二匹の錦鯉が優雅にしなりながら見事な双魚のシンボルを描き、心に平穏を、人生に永続する富と幸運の流れをもたらします。",
+        hero_btn: "傑作を堪能する 🌊",
+        section_title: "注目の商品",
+        section_desc: "全30商品中、1ページあたり6商品を表示",
+        page_text: "ページ",
+        btn_prev: "<i class='fa-solid fa-chevron-left mr-1'></i> 前へ",
+        btn_next: "次へ <i class='fa-solid fa-chevron-right ml-1'></i>",
+        contact_title: "連絡先＆お支払い情報",
+        contact_desc: "何かお困りですか？以下の詳細情報から直接お問い合わせください：",
+        contact_address_title: "店舗住所",
+        contact_address_detail: "ハノイ市タインスアン区レ・ヴァン・ルオン通り21番地",
+        contact_zalo: "Zalo 24/7 カスタマーサポート",
+        payment_title: "<i class='fa-solid fa-credit-card mr-2 text-xs shrink-0'></i>銀行振込によるお支払い情報",
+        payment_bank: "銀行名:",
+        payment_acc_num: "口座番号:",
+        payment_acc_holder: "口座名義:",
+        map_btn: "検索",
+        map_placeholder: "地図から場所を検索...",
+        cart_title: "<i class='fa-solid fa-bag-shopping mr-2 text-teal-600'></i> ショッピングカート",
+        cart_empty: "カートは空です",
+        cart_total_text: "合計金額:",
+        cart_checkout_btn: "<i class='fa-solid fa-paper-plane'></i> Zaloで注文を送信",
+        zalo_msg_prefix: "こんにちは Apalu-Store、これらの商品を購入したいです：\n",
+        zalo_msg_total: "合計: ",
+        cat_fashion: "ファッション",
+        cat_sports: "スポーツ用品",
+        cat_health: "スポーツ・健康ケア",
+        cat_accessories: "アクセサリー",
+        badge_banchay: "売れ筋",
+        badge_moi: "新着",
+        p1: "金星刺繍 Tシャツ",
+        p2: "麒麟刺繍 ポロシャツ",
+        p3: "スポーツポロシャツ",
+        p4: "ロングトレーニングウェア上下セット",
+        p5: "ヨガマット",
+        p6: "筋肉セラピー器具（5点セット）",
+        p7: "スポーツバッグ",
+        p8: "かっさ用純銀リング/チャーム",
+        p9: "地球儀マップ",
+        p10: "五色紐天然石風水ブレスレット",
+        p11: "五色紐天然石風水ブレスレット",
+        p12: "ホット/アイス対応インスタントコーヒー"
+    },
+    ko: {
+        nav_home: "홈",
+        nav_products: "상품 보기",
+        nav_contact: "문의하기",
+        hanoi_clock: "하노이:",
+        hero_badge: "☯️ 2026 쌍어 금붕어 명작 컬렉션",
+        hero_title: "번영과 평화의 영원한 순환",
+        hero_desc: "두 마리의 코이 잉어가 부드럽게 유영하며 완벽한 쌍어궁 문양을 이루어, 당신의 삶에 균형 잡힌 에너지와 행운, 영원한 재물을 가져다줍니다.",
+        hero_btn: "명작 감상하기 🌊",
+        section_title: "추천 상품",
+        section_desc: "총 30개 상품 중 페이지당 6개 표시",
+        page_text: "페이지",
+        btn_prev: "<i class='fa-solid fa-chevron-left mr-1'></i> 이전",
+        btn_next: "다음 <i class='fa-solid fa-chevron-right ml-1'></i>",
+        contact_title: "연락처 및 결제 정보",
+        contact_desc: "도움이 필요하십니까? 아래의 상세 정보를 통해 직접 문의해 주세요:",
+        contact_address_title: "매장 위치",
+        contact_address_detail: "하노이 청춘구 레반르엉로 21",
+        contact_zalo: "Zalo 24/7 실시간 상담",
+        payment_title: "<i class='fa-solid fa-credit-card mr-2 text-xs shrink-0'></i>계좌 이체 결제 정보",
+        payment_bank: "은행:",
+        payment_acc_num: "계좌 번호:",
+        payment_acc_holder: "예금주:",
+        map_btn: "검색",
+        map_placeholder: "지도에서 위치 검색...",
+        cart_title: "<i class='fa-solid fa-bag-shopping mr-2 text-teal-600'></i> 장바구니",
+        cart_empty: "장바구니가 비어 있습니다",
+        cart_total_text: "총 결제 금액:",
+        cart_checkout_btn: "<i class='fa-solid fa-paper-plane'></i> Zalo로 주문 전송",
+        zalo_msg_prefix: "안녕하세요 Apalu-Store, 다음 상품을 주문하고 싶습니다:\n",
+        zalo_msg_total: "총 금액: ",
+        cat_fashion: "패션 의류",
+        cat_sports: "스포츠 용품",
+        cat_health: "스포츠 및 건강 관리",
+        cat_accessories: "패션 잡화",
+        badge_banchay: "인기 상품",
+        badge_moi: "신상품",
+        p1: "금빛 별 자수 티셔츠",
+        p2: "기린 자수 폴로셔츠",
+        p3: "기능성 스포츠 폴로셔츠",
+        p4: "긴팔 스포츠 트레이닝 세트",
+        p5: "요가 매트",
+        p6: "근육 이완 테라피 기구 (5종 세트)",
+        p7: "스포츠 가방",
+        p8: "실버 괄사 반지/참",
+        p9: "세계 지구본",
+        p10: "오색 실 매듭 풍수 팔찌",
+        p11: "오색 실 매듭 풍수 팔찌",
+        p12: "온/냉수 겸용 인스턴트 커피"
+    }
+};
+
+// Hàm cập nhật tất cả phần tử HTML tĩnh có thuộc tính data-i18n
+function updateContent(lang) {
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            element.innerHTML = translations[lang][key];
+        }
+    });
+
+    // Cập nhật Input Placeholder riêng biệt
+    const mapInput = document.getElementById('map-search-input');
+    if (mapInput && translations[lang] && translations[lang]['map_placeholder']) {
+        mapInput.placeholder = translations[lang]['map_placeholder'];
+    }
+
+    // Thiết lập thẻ cấu trúc hỗ trợ SEO quốc tế
+    document.documentElement.lang = lang;
+
+    // Làm mới UI danh sách sản phẩm động theo ngôn ngữ mới
+    if (typeof displayProducts === 'function' && typeof currentPage !== 'undefined') {
+        displayProducts(currentPage);
+    }
+
+    // Làm mới UI giỏ hàng hiện tại
+    if (typeof updateCartUI === 'function') {
+        updateCartUI();
+    }
+}
+
+// Hàm ánh xạ và dịch các thuộc tính của Object sản phẩm động
+function getLocalizedProduct(product, lang) {
+    const localized = { ...product };
+    const langSet = translations[lang];
+    if (!langSet) return localized;
+
+    // Dịch tên sản phẩm
+    if (langSet[`p${product.id}`]) {
+        localized.name = langSet[`p${product.id}`];
+    }
+    // Dịch danh mục
+    if (product.category === "Thời trang" && langSet['cat_fashion']) localized.category = langSet['cat_fashion'];
+    else if (product.category === "Dụng cụ thể thao" && langSet['cat_sports']) localized.category = langSet['cat_sports'];
+    else if (product.category === "Dụng cụ thể thao - Chăm sóc sức khỏe" && langSet['cat_health']) localized.category = langSet['cat_health'];
+    else if (product.category === "Phụ kiện" && langSet['cat_accessories']) localized.category = langSet['cat_accessories'];
+
+    // Dịch Badge nhãn dán
+    if (product.badge === "Bán chạy" && langSet['badge_banchay']) localized.badge = langSet['badge_banchay'];
+    else if (product.badge === "Mới" && langSet['badge_moi']) localized.badge = langSet['badge_moi'];
+
+    return localized;
+}
